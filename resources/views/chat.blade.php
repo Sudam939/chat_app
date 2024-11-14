@@ -24,7 +24,7 @@
 
                         @foreach ($users as $user)
                             <a href="{{ route('chat', $user->id) }}"
-                                class="flex flex-row items-center hover:bg-gray-100 rounded-xl p-2">
+                                class="flex flex-row items-center hover:bg-gray-100 rounded-xl p-2 {{ $user->id == $receiver->id ? 'bg-gray-100' : '' }}">
                                 <div class="flex items-center justify-center h-8 w-8 bg-indigo-200 rounded-full">
                                     {{ $user->name[0] }}
                                 </div>
@@ -35,6 +35,8 @@
                     </div>
                 </div>
             </div>
+
+            @livewire('chat-component',['user_id' => $receiver->id])
         </div>
     </div>
 </x-app-layout>
